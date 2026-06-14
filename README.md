@@ -1,4 +1,4 @@
-# Prathvi's Portfolio - React Version
+# Krishna's Portfolio - React Version
 
 A modern, responsive portfolio website built with React, Tailwind CSS, and Three.js, featuring Netlify Forms integration and Zapier automation.
 
@@ -145,4 +145,4 @@ Feel free to fork this project and customize it for your own portfolio!
 
 ---
 
-**Built by Prathvi Singh Thakur**
+**Built by Krishna Pathak**
