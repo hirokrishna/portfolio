@@ -63,137 +63,102 @@ const TechnicalProwess = () => {
   const projects = [
     {
       id: 1,
-      title: "Personal Portfolio Website",
+      title: "MediMate: AI Healthcare Companion",
       category: "Web Development",
-      tech: ["React", "Tailwind CSS", "JavaScript"],
-      description: "A responsive and dynamic portfolio showcasing diverse skills and projects.",
-      github: "https://github.com/Prathvi321/Portfolio",
-      demo: "https://polymathportfolio.netlify.app/",
+      tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Web Audio API", "Service Workers"],
+      description: "An AI-powered healthcare assistant with intelligent chat conversations, text-to-speech audio capabilities, and offline PWA functionality.",
+      github: "https://github.com/hirokrishna/MediMate",
+      demo: "",
       media: [
-        { type: "image", url: "/Portfolio.png" },
-        { type: "image", url: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" }
+        { type: "image", url: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80" }
       ],
       details: {
-        whatIDid: "Designed and developed a complete personal portfolio using React and Tailwind CSS from scratch.",
-        approach: "Focused on a clean, modern glassmorphism aesthetic with smooth scroll animations to create a premium feel.",
-        vision: "To build a digital resume that not only lists my skills but actively demonstrates my front-end capabilities.",
-        problemSolved: "Created a centralized hub for all my projects, certifications, and contact info, making it easy for recruiters to evaluate my profile."
+        whatIDid: "Architected and built the entire medical companion system using Next.js 14 and Tailwind CSS.",
+        approach: "Leveraged serverless API routes to integrate conversational AI models and custom browser-level audio helper functions for local speech output. Implemented progressive web app (PWA) configurations.",
+        vision: "To create an accessible, offline-capable digital assistant that can answer general health queries and provide local first-aid guidance safely.",
+        problemSolved: "Created a highly performant interface that works offline for vital medical instructions, reducing dependencies on slow internet connections."
       }
     },
     {
       id: 2,
-      title: "CodeHub: A Learning Platform",
+      title: "NutriTrack: AI Nutrition Tracker",
       category: "Web Development",
-      tech: ["React", "Tailwind CSS", "JavaScript"],
-      description: "A comprehensive learning platform designed to take coders from beginner to pro.",
-      github: "https://github.com/Prathvi321/CodeHub",
-      demo: "https://codehub321.netlify.app",
+      tech: ["HTML5", "CSS3", "JavaScript", "Google Gemini API", "localStorage"],
+      description: "A client-side web application leveraging the Gemini 2.0 Flash API to extract nutritional values from natural language descriptions and calculate BMR/BMI/TDEE.",
+      github: "https://github.com/hirokrishna/NutriTrack",
+      demo: "",
       media: [
-        { type: "image", url: "Projects/CodeHub/CodeHub_01.jpeg" },
-        { type: "image", url: "Projects/CodeHub/CodeHub_02.png" },
-        { type: "image", url: "Projects/CodeHub/CodeHub_03.png" },
-        { type: "image", url: "Projects/CodeHub/CodeHub_04.png" },
-        { type: "image", url: "Projects/CodeHub/CodeHub_05.png" }
+        { type: "image", url: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=800&q=80" }
       ],
       details: {
-        whatIDid: "Built a fully functional e-learning platform frontend with course catalog, video player, and user dashboard.",
-        approach: "Utilized React Router for seamless navigation and a state management system to track user progress.",
-        vision: "To democratize coding education by providing an accessible, intuitive platform for learners of all levels.",
-        problemSolved: "Solved the problem of scattered learning resources by aggregating tutorials, exercises, and progress tracking in one place."
+        whatIDid: "Built a lightweight frontend using vanilla JavaScript and responsive pure CSS.",
+        approach: "Integrated the Gemini 2.0 Flash API to interpret food items from natural user input and format the output into structured JSON tables. Utilized localStorage for offline user persistence.",
+        vision: "To democratize health tracking by offering a free, registration-optional, and fully private AI nutrition diary.",
+        problemSolved: "Eliminated the tedious task of manually logging food items by allowing users to type a single sentence like 'I ate two boiled eggs and a banana' and instantly get exact macros."
       }
     },
     {
       id: 3,
-      title: "Git Bridge: Tool to use Git",
-      category: "Python (DSA)",
-      tech: ["Python", "tkinter", "Git", "Automation"],
-      description: "This Application offers a visual, intuitive interface for GitHub, eliminating the need for complex Git commands.",
-      github: "https://github.com/Prathvi321/Git-Bridge",
-      demo: "https://gitbridge.netlify.app/",
+      title: "City Bus: Smart Transport Tracker",
+      category: "Web Development",
+      tech: ["JavaScript", "Leaflet.js", "OpenWeatherMap API", "CSS3", "PWA"],
+      description: "A static web application simulating city bus routes in real-time with live weather integration, Leaflet maps, and emergency SOS functionality.",
+      github: "https://github.com/hirokrishna/City-Bus",
+      demo: "",
       media: [
-        { type: "video", url: "/GitBridge.mp4" },
-        { type: "image", url: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=800&q=80" }
+        { type: "image", url: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80" }
       ],
       details: {
-        whatIDid: "Developed a desktop GUI application using Python and Tkinter that acts as a wrapper around Git CLI commands.",
-        approach: "Automated the execution of shell commands through Python's subprocess module, parsing the output into a user-friendly interface.",
-        vision: "To lower the barrier to entry for version control, helping beginners use Git without the steep command-line learning curve.",
-        problemSolved: "Eliminated the friction of memorizing Git commands for simple tasks like committing, pushing, and pulling, reducing workflow errors."
+        whatIDid: "Developed the map rendering logic using Leaflet.js and implemented simulated bus tracking along route polylines.",
+        approach: "Crafted platform-aware emergency SOS actions and integrated weather updates using OpenWeatherMap API with fallback mechanisms. Configured manifest.json for PWA installability.",
+        vision: "To provide a lightweight, accessible utility for smart city transit information that performs perfectly on low-end mobile devices.",
+        problemSolved: "Optimized map marker updates and DOM transitions to ensure smooth bus animations and reduce mobile battery drain during continuous tracking."
       }
     },
     {
       id: 4,
-      title: "HVEV - Client Production Website",
-      category: "Web Development",
-      tech: ["React", "Vercel", "Google Apps Script", "Resend", "Git"],
-      description: "A real-world production website built and deployed for a client running at almost ₹0 cost using modern integrations.",
-      github: "https://github.com/KISAAN-MITRA/KISAAN-MITRA-",
-      demo: "https://www.hvev.in",
+      title: "JPMorgan Software Simulation (Midas)",
+      category: "Python & Data Engineering",
+      tech: ["Python", "React", "TypeScript", "Perspective", "Data Visualizations"],
+      description: "A development repository detailing corporate software engineering fixes, financial data processing, and stock chart integrations.",
+      github: "https://github.com/hirokrishna/forage-midas",
+      demo: "",
       media: [
-        { type: "image", url: "/Projects/HVEV Client Project/linkedin-image-1777031455-3533.jpg" },
-        { type: "image", url: "/Projects/HVEV Client Project/linkedin-image-1777031455-4113.jpg" },
-        { type: "image", url: "/Projects/HVEV Client Project/linkedin-image-1777031455-5119.jpg" },
-        { type: "image", url: "/Projects/HVEV Client Project/linkedin-image-1777031455-5762.jpg" },
-        { type: "image", url: "/Projects/HVEV Client Project/linkedin-image-1777031455-6394.jpg" },
-        { type: "image", url: "/Projects/HVEV Client Project/linkedin-image-1777031455-7136.jpg" },
-        { type: "image", url: "/Projects/HVEV Client Project/linkedin-image-1777031455-9336.jpg" }
+        { type: "image", url: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=800&q=80" }
       ],
       details: {
-        whatIDid: "Collaborated on the frontend initially, then took full ownership of the backend logic, automated email responses, and deployment. Managed the complete GitHub workflow and connected the custom domain.",
-        approach: "The interesting challenge was the client's constraint: they wanted everything to run at minimal to zero cost. I architected a system using free tiers of modern serverless tools instead of traditional paid hosting.",
-        vision: "To deliver a highly functional, scalable, and professional website without the overhead of monthly database and hosting subscriptions, focusing on real-world constraints.",
-        problemSolved: "Used Google Sheets + Apps Script as a lightweight, zero-cost database. Managed user form data efficiently and switched from Zapier to the Resend API for a more scalable, free email automation solution."
+        whatIDid: "Contributed software fixes to the system codebase as part of JPMorgan's simulation.",
+        approach: "Worked with Python for data feeds and financial scripts, and updated React-based charts using the Perspective open-source data visualization library.",
+        vision: "To understand production-level software systems in finance and adapt corporate engineering practices.",
+        problemSolved: "Corrected charting bugs to ensure accurate real-time stock correlation graphs displayed for trading operators."
       }
-    },
-    {
-      id: 5,
-      title: "Utility Box: AI-Powered Multi-Tool",
-      category: "Web Development",
-      tech: ["React", "Gemini API", "remove.bg API", "JavaScript"],
-      description: "A multi-utility AI-powered platform integrating multiple APIs — combining intelligent responses, background removal, and more in one place.",
-      github: "https://github.com/Prathvi321/Utility-Box",
-      demo: "https://utilityboxy.netlify.app",
-      media: [
-        { type: "image", url: "/Projects/Utility Box/ChatGPT Image Apr 24, 2026, 08_33_03 PM.png" },
-        { type: "image", url: "/Projects/Utility Box/Screenshot from 2026-04-24 20-26-04.png" },
-        { type: "image", url: "/Projects/Utility Box/Screenshot from 2026-04-24 20-26-14.png" },
-        { type: "image", url: "/Projects/Utility Box/Screenshot from 2026-04-24 20-26-27.png" },
-        { type: "image", url: "/Projects/Utility Box/Screenshot from 2026-04-24 20-26-37.png" },
-        { type: "image", url: "/Projects/Utility Box/Screenshot from 2026-04-24 20-27-30.png" }
-      ],
-      details: {
-        whatIDid: "Built a multi-utility AI-powered tool by integrating Gemini API for intelligent responses and remove.bg API for background removal, combining different features into a single cohesive platform.",
-        approach: "Started as an experiment with AI tools but evolved into a real engineering challenge. Debugged AI-generated errors, refactored and optimized code, handled API failures and edge cases, and made everything work together smoothly.",
-        vision: "To move beyond just 'using AI' to actually engineering with AI — understanding how to build reliable systems that leverage AI capabilities while handling the real-world complexity AI alone can't solve.",
-        problemSolved: "AI can generate code, but it doesn't always work correctly. This project tackled the gap between AI-generated output and production-ready software by debugging, refactoring, and building robust error handling around multiple API integrations."
-      }
-    },
+    }
   ];
 
   const certifications = [
     {
       id: 1,
-      title: "C++ Course: Learn the Essentials",
-      date: "17 Feb 2026",
-      image: "/C++ Course: Learn the Essentials.png",
+      title: "Google × Kaggle AI Agents Course",
+      date: "Feb 2026",
+      image: "https://placehold.co/150x150/4285F4/FFFFFF?text=Google+AI",
     },
     {
       id: 2,
-      title: "Python and SQL for Data Science",
-      date: "14 Feb 2026",
-      image: "/Python and SQL for Data Science.png",
+      title: "JPMorgan Chase Software Engineering Simulation",
+      date: "Jan 2026",
+      image: "https://placehold.co/150x150/003F87/FFFFFF?text=JPMC",
     },
     {
       id: 3,
-      title: "Python Course for Beginners With Certification: Mastering the Essentials",
-      date: "11 Dec 2025",
-      image: "/Python Course for Beginners With Certification: Mastering the Essentials.png",
+      title: "AI & Python Development Course",
+      date: "Dec 2025",
+      image: "https://placehold.co/150x150/3776AB/FFFFFF?text=Python+AI",
     },
     {
       id: 4,
-      title: "SQL for Beginners: Learn SQL using MySQL and Database Design Course",
-      date: "6 Nov 2025",
-      image: "/SQL for Beginners: Learn SQL using MySQL and Database Design Course.png",
+      title: "be10x AI Workshop",
+      date: "Oct 2025",
+      image: "https://placehold.co/150x150/000000/FFFFFF?text=be10x",
     },
   ];
 
@@ -215,9 +180,7 @@ const TechnicalProwess = () => {
     { name: "MySQL", icon: "/icons/mysql-icon.svg" },
     { name: "MongoDB", icon: "/icons/mongodb-icon.svg" },
     { name: "N8N", icon: "/icons/n8n-color.svg" },
-    { name: "Zapier", icon: "/icons/zapier-icon-svgrepo-com.svg" },
-    { name: "Blender", icon: "/icons/blender-svgrepo-com.svg" },
-    { name: "Unreal", icon: "/icons/icons8-unreal-engine.svg" },
+    { name: "Zapier", icon: "/icons/zapier-icon-svgrepo-com.svg" }
   ];
 
   return (

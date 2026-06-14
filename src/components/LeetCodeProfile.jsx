@@ -1,158 +1,336 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { CheckCircle2, Star, Trophy, Users } from 'lucide-react';
 
 const LeetCodeProfile = () => {
+  const [leetcodeData, setLeetcodeData] = useState({
+    solved: 6,
+    easy: 4,
+    medium: 2,
+    hard: 0,
+    totalEasy: 950,
+    totalMedium: 2069,
+    totalHard: 943,
+    totalQuestions: 3962,
+    ranking: 5000001,
+    acceptanceRate: 66.7
+  });
+
+  const [codeforcesData, setCodeforcesData] = useState({
+    rating: "Unrated",
+    maxRating: "N/A",
+    rank: "Unranked",
+    maxRank: "N/A",
+    solved: 2,
+    contributions: 0
+  });
+
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        // Fetch LeetCode Data
+        const lcRes = await fetch("https://alfa-leetcode-api.onrender.com/userProfile/hiroKrishna");
+        if (lcRes.ok) {
+          const lcData = await lcRes.json();
+          setLeetcodeData({
+            solved: lcData.totalSolved || 6,
+            easy: lcData.easySolved || 4,
+            medium: lcData.mediumSolved || 2,
+            hard: lcData.hardSolved || 0,
+            totalEasy: lcData.totalEasy || 950,
+            totalMedium: lcData.totalMedium || 2069,
+            totalHard: lcData.totalHard || 943,
+            totalQuestions: lcData.totalQuestions || 3962,
+            ranking: lcData.ranking || 5000001,
+            acceptanceRate: lcData.totalSolved ? parseFloat(((lcData.totalSolved / (lcData.totalSubmissions?.[0]?.submissions || lcData.totalSolved * 1.5)) * 100).toFixed(1)) : 66.7
+          });
+        }
+      } catch (err) {
+        console.error("Error fetching LeetCode data", err);
+      }
+
+      try {
+        // Fetch Codeforces User Info
+        const cfInfoRes = await fetch("https://codeforces.com/api/user.info?handles=Krishnapathak7");
+        if (cfInfoRes.ok) {
+          const cfInfo = await cfInfoRes.json();
+          if (cfInfo.status === "OK" && cfInfo.result.length > 0) {
+            const user = cfInfo.result[0];
+            setCodeforcesData(prev => ({
+              ...prev,
+              rating: user.rating !== undefined ? user.rating : "Unrated",
+              maxRating: user.maxRating !== undefined ? user.maxRating : "N/A",
+              rank: user.rank !== undefined ? user.rank : "Unranked",
+              maxRank: user.maxRank !== undefined ? user.maxRank : "N/A",
+              contributions: user.contribution !== undefined ? user.contribution : 0
+            }));
+          }
+        }
+
+        // Fetch Codeforces Submissions for Solved Count
+        const cfStatusRes = await fetch("https://codeforces.com/api/user.status?handle=Krishnapathak7");
+        if (cfStatusRes.ok) {
+          const cfStatus = await cfStatusRes.json();
+          if (cfStatus.status === "OK") {
+            const solvedProblems = new Set();
+            cfStatus.result.forEach(submission => {
+              if (submission.verdict === 'OK' && submission.problem) {
+                const probId = `${submission.problem.contestId}-${submission.problem.index}`;
+                solvedProblems.add(probId);
+              }
+            });
+            setCodeforcesData(prev => ({
+              ...prev,
+              solved: solvedProblems.size
+            }));
+          }
+        }
+      } catch (err) {
+        console.error("Error fetching Codeforces data", err);
+      }
+    };
+
+    fetchStats();
+  }, []);
+
   return (
-    <section id="leetcode" className="py-20 px-4 bg-white relative border-y border-gray-100">
+    <section id="leetcode" className="py-24 px-4 bg-white relative border-y border-gray-100">
       <div className="container mx-auto max-w-6xl">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
-          <div className="flex items-center gap-4">
-            <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm border border-gray-100">
-               <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="LeetCode Logo" className="w-10 h-10 object-contain" />
-            </div>
-            <div>
-              <h2 className="text-4xl font-extrabold text-gray-900 mb-1">
-                LeetCode Profile
-              </h2>
-              <p className="text-gray-600 font-medium">Consistent problem solving & algorithmic thinking.</p>
-            </div>
-          </div>
-          <a
-            href="https://leetcode.com/u/Prathvi321/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#FFA116] hover:bg-[#ff9200] text-white font-bold rounded-xl shadow-[0_4px_14px_0_rgba(255,161,22,0.39)] hover:shadow-[0_6px_20px_rgba(255,161,22,0.23)] transition-all hover:-translate-y-1 group"
-          >
-            Visit Profile
-            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-          </a>
+        {/* SECTION HEADER */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-blue-600 mb-4 animate-fade-in-up">
+            Problem Solving & Competitive Programming
+          </h2>
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto animate-fade-in-up delay-200">
+            Live statistics fetched in real-time from coding profiles.
+          </p>
         </div>
 
-        {/* Leetcode UI Mockup */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          
-          {/* Top Row equivalent: Rating & Rank */}
-          <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            {/* Contest Rating */}
-            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:shadow-md transition">
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <div className="text-gray-500 text-sm font-semibold mb-1">Contest Rating</div>
-                  <div className="text-4xl font-black text-gray-900 flex items-center gap-2">
-                    1,415
-                    <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {/* ================= LEETCODE CARD ================= */}
+          <div className="bg-gray-50 rounded-3xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition duration-300 flex flex-col justify-between">
+            <div>
+              {/* Card Header */}
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4 border-b border-gray-200 pb-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png"
+                      alt="LeetCode Logo"
+                      className="w-8 h-8 object-contain"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900">LeetCode</h3>
+                    <p className="text-gray-500 text-sm font-semibold">@hiroKrishna</p>
                   </div>
                 </div>
-                <div className="text-right">
-                  <div className="text-gray-500 text-sm mb-1 font-medium">Apr 11, 2026</div>
-                  <div className="text-gray-900 text-sm font-semibold">Biweekly Contest 180</div>
-                  <div className="text-gray-500 text-xs mt-1">Rank: 27,732</div>
+                <a
+                  href="https://leetcode.com/u/hiroKrishna/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#FFA116] hover:bg-[#ff9200] text-white text-sm font-bold rounded-xl shadow-md transition-all hover:-translate-y-0.5"
+                >
+                  Visit Profile
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </a>
+              </div>
+
+              {/* Main Solved Stats */}
+              <div className="flex flex-col md:flex-row items-center gap-8 mb-8 justify-around">
+                {/* Circular Indicator */}
+                <div className="relative w-36 h-36 flex-shrink-0">
+                  <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#e5e7eb" strokeWidth="4" />
+                    {/* Easy Segment */}
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="45"
+                      fill="none"
+                      stroke="#00b8a3"
+                      strokeWidth="5.5"
+                      strokeDasharray="283"
+                      strokeDashoffset={283 - (283 * (leetcodeData.easy / leetcodeData.totalQuestions))}
+                      strokeLinecap="round"
+                    />
+                    {/* Medium Segment */}
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="45"
+                      fill="none"
+                      stroke="#ffc01e"
+                      strokeWidth="5.5"
+                      strokeDasharray="283"
+                      strokeDashoffset={283 - (283 * ((leetcodeData.easy + leetcodeData.medium) / leetcodeData.totalQuestions))}
+                      strokeLinecap="round"
+                    />
+                    {/* Hard Segment */}
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="45"
+                      fill="none"
+                      stroke="#ef4743"
+                      strokeWidth="5.5"
+                      strokeDasharray="283"
+                      strokeDashoffset={283 - (283 * (leetcodeData.solved / leetcodeData.totalQuestions))}
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <div className="text-3xl font-black text-gray-900">{leetcodeData.solved}</div>
+                    <div className="text-xs font-semibold text-gray-400">/ {leetcodeData.totalQuestions}</div>
+                    <div className="text-gray-500 text-[10px] font-bold tracking-wider uppercase mt-1">Solved</div>
+                  </div>
+                </div>
+
+                {/* Stat Bars */}
+                <div className="flex-1 w-full space-y-4">
+                  {/* Easy */}
+                  <div>
+                    <div className="flex justify-between text-xs font-bold text-gray-500 mb-1">
+                      <span className="text-[#00b8a3]">Easy</span>
+                      <span className="text-gray-800">{leetcodeData.easy} / {leetcodeData.totalEasy}</span>
+                    </div>
+                    <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                      <div className="bg-[#00b8a3] h-full rounded-full transition-all duration-1000" style={{ width: `${(leetcodeData.easy / leetcodeData.totalEasy) * 100}%` }}></div>
+                    </div>
+                  </div>
+                  {/* Medium */}
+                  <div>
+                    <div className="flex justify-between text-xs font-bold text-gray-500 mb-1">
+                      <span className="text-[#ffc01e]">Medium</span>
+                      <span className="text-gray-800">{leetcodeData.medium} / {leetcodeData.totalMedium}</span>
+                    </div>
+                    <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                      <div className="bg-[#ffc01e] h-full rounded-full transition-all duration-1000" style={{ width: `${(leetcodeData.medium / leetcodeData.totalMedium) * 100}%` }}></div>
+                    </div>
+                  </div>
+                  {/* Hard */}
+                  <div>
+                    <div className="flex justify-between text-xs font-bold text-gray-500 mb-1">
+                      <span className="text-[#ef4743]">Hard</span>
+                      <span className="text-gray-800">{leetcodeData.hard} / {leetcodeData.totalHard}</span>
+                    </div>
+                    <div className="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                      <div className="bg-[#ef4743] h-full rounded-full transition-all duration-1000" style={{ width: `${(leetcodeData.hard / leetcodeData.totalHard) * 100}%` }}></div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="mt-4 border-t border-gray-200 pt-6">
-                {/* Timeline mock */}
-                <div className="w-full h-0.5 bg-[#FFA116]/30 relative my-2">
-                  <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-4 h-4 bg-[#FFA116] rounded-full border-4 border-orange-100 shadow-sm"></div>
-                  <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-0.5 h-12 bg-[#FFA116]/40 -z-10"></div>
+            </div>
+
+            {/* Dashboard Footer Stats */}
+            <div className="border-t border-gray-200 pt-6 grid grid-cols-2 gap-4 text-center mt-auto">
+              <div>
+                <div className="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1">Global Ranking</div>
+                <div className="text-xl font-bold text-gray-800 font-mono">
+                  {leetcodeData.ranking.toLocaleString()}
                 </div>
-                <div className="text-center text-gray-400 font-medium text-xs mt-4">Apr 2026</div>
+              </div>
+              <div>
+                <div className="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1">Acceptance Rate</div>
+                <div className="text-xl font-bold text-gray-800 font-mono">{leetcodeData.acceptanceRate}%</div>
+              </div>
+            </div>
+          </div>
+
+          {/* ================= CODEFORCES CARD ================= */}
+          <div className="bg-gray-50 rounded-3xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition duration-300 flex flex-col justify-between">
+            <div>
+              {/* Card Header */}
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4 border-b border-gray-200 pb-6">
+                <div className="flex items-center gap-4">
+                  {/* Custom Codeforces SVG Icon */}
+                  <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100 p-2">
+                    <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="2" y="4" width="4" height="16" rx="1" fill="#3B5998" />
+                      <rect x="9" y="8" width="4" height="12" rx="1" fill="#FF4C4C" />
+                      <rect x="16" y="11" width="4" height="9" rx="1" fill="#FFC107" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900">Codeforces</h3>
+                    <p className="text-gray-500 text-sm font-semibold">@Krishnapathak7</p>
+                  </div>
+                </div>
+                <a
+                  href="https://codeforces.com/profile/Krishnapathak7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold rounded-xl shadow-md transition-all hover:-translate-y-0.5"
+                >
+                  Visit Profile
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </a>
+              </div>
+
+              {/* Stats Grid */}
+              <div className="grid grid-cols-2 gap-6 mb-8">
+                {/* Solved Problems */}
+                <div className="bg-white p-5 rounded-2xl border border-gray-100 flex items-center gap-4 shadow-sm group">
+                  <div className="bg-emerald-50 text-emerald-600 p-3 rounded-xl">
+                    <CheckCircle2 className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-gray-400 text-xs font-bold uppercase tracking-wider">Solved</div>
+                    <div className="text-2xl font-black text-gray-900">{codeforcesData.solved}</div>
+                  </div>
+                </div>
+
+                {/* Rating */}
+                <div className="bg-white p-5 rounded-2xl border border-gray-100 flex items-center gap-4 shadow-sm">
+                  <div className="bg-blue-50 text-blue-600 p-3 rounded-xl">
+                    <Trophy className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-gray-400 text-xs font-bold uppercase tracking-wider">Rating</div>
+                    <div className="text-xl font-black text-gray-900">{codeforcesData.rating}</div>
+                  </div>
+                </div>
+
+                {/* Max Rating */}
+                <div className="bg-white p-5 rounded-2xl border border-gray-100 flex items-center gap-4 shadow-sm">
+                  <div className="bg-purple-50 text-purple-600 p-3 rounded-xl">
+                    <Star className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-gray-400 text-xs font-bold uppercase tracking-wider">Max Rating</div>
+                    <div className="text-xl font-black text-gray-900">{codeforcesData.maxRating}</div>
+                  </div>
+                </div>
+
+                {/* Contributions */}
+                <div className="bg-white p-5 rounded-2xl border border-gray-100 flex items-center gap-4 shadow-sm">
+                  <div className="bg-amber-50 text-amber-600 p-3 rounded-xl">
+                    <Users className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-gray-400 text-xs font-bold uppercase tracking-wider">Contribution</div>
+                    <div className="text-xl font-black text-gray-900">{codeforcesData.contributions}</div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Rank / Top % */}
-            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col justify-between hover:shadow-md transition">
-               <div className="mb-6">
-                  <div className="text-gray-500 text-sm font-semibold mb-1">Top</div>
-                  <div className="text-4xl font-black text-gray-900">76.88%</div>
-               </div>
-               {/* Mock Graph */}
-               <div className="flex items-end gap-1 h-20 mt-4 opacity-70">
-                 {[5, 5, 5, 5, 6, 8, 12, 18, 25, 45, 90, 60, 40, 30, 20, 15, 10, 8, 8, 5, 5, 5, 5, 5].map((h, i) => (
-                   <div key={i} className={`flex-1 rounded-t-sm transition-colors ${i === 10 ? 'bg-[#FFA116] opacity-100' : 'bg-gray-200 hover:bg-gray-300'}`} style={{ height: `${h}%` }}></div>
-                 ))}
-               </div>
+            {/* Dashboard Footer Stats */}
+            <div className="border-t border-gray-200 pt-6 grid grid-cols-2 gap-4 text-center mt-auto">
+              <div>
+                <div className="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1">Current Rank</div>
+                <div className="text-xl font-bold text-gray-800 capitalize font-sans">{codeforcesData.rank}</div>
+              </div>
+              <div>
+                <div className="text-gray-400 text-xs font-bold uppercase tracking-wider mb-1">Max Rank</div>
+                <div className="text-xl font-bold text-gray-800 capitalize font-sans">{codeforcesData.maxRank}</div>
+              </div>
             </div>
           </div>
-
-          {/* Bottom Row: Solved Stats */}
-          <div className="lg:col-span-2 bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-200 shadow-sm flex flex-col md:flex-row items-center gap-10 justify-between hover:shadow-md transition">
-            {/* Circular Progress */}
-            <div className="relative w-44 h-44 flex-shrink-0">
-               <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                 <circle cx="50" cy="50" r="45" fill="none" stroke="#f3f4f6" strokeWidth="3" />
-                 {/* Easy Segment */}
-                 <circle cx="50" cy="50" r="45" fill="none" stroke="#00b8a3" strokeWidth="3.5" strokeDasharray="283" strokeDashoffset="240" strokeLinecap="round" />
-                 {/* Med Segment */}
-                 <circle cx="50" cy="50" r="45" fill="none" stroke="#ffc01e" strokeWidth="3.5" strokeDasharray="283" strokeDashoffset="265" strokeLinecap="round" />
-                 {/* Hard Segment */}
-                 <circle cx="50" cy="50" r="45" fill="none" stroke="#ef4743" strokeWidth="3.5" strokeDasharray="283" strokeDashoffset="278" strokeLinecap="round" />
-               </svg>
-               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                 <div className="flex items-baseline gap-1">
-                   <span className="text-4xl font-black text-gray-900">65</span>
-                   <span className="text-sm font-semibold text-gray-400">/3907</span>
-                 </div>
-                 <div className="text-gray-600 text-sm font-semibold flex items-center gap-1 mt-1">
-                   <svg className="w-4 h-4 text-[#00b8a3]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"/></svg>
-                   Solved
-                 </div>
-               </div>
-            </div>
-
-            {/* Breakdown */}
-            <div className="flex-1 w-full space-y-3">
-               {/* Easy */}
-               <div className="bg-white p-3.5 rounded-xl border border-gray-100 shadow-sm flex justify-between items-center group hover:bg-gray-50 transition">
-                 <span className="text-[#00b8a3] font-bold text-sm bg-[#00b8a3]/10 px-3 py-1 rounded-md">Easy</span>
-                 <span className="text-gray-900 font-bold text-lg">45 <span className="text-gray-400 font-semibold text-xs ml-1">/938</span></span>
-               </div>
-               {/* Medium */}
-               <div className="bg-white p-3.5 rounded-xl border border-gray-100 shadow-sm flex justify-between items-center group hover:bg-gray-50 transition">
-                 <span className="text-[#ffc01e] font-bold text-sm bg-[#ffc01e]/10 px-3 py-1 rounded-md">Med.</span>
-                 <span className="text-gray-900 font-bold text-lg">14 <span className="text-gray-400 font-semibold text-xs ml-1">/2045</span></span>
-               </div>
-               {/* Hard */}
-               <div className="bg-white p-3.5 rounded-xl border border-gray-100 shadow-sm flex justify-between items-center group hover:bg-gray-50 transition">
-                 <span className="text-[#ef4743] font-bold text-sm bg-[#ef4743]/10 px-3 py-1 rounded-md">Hard</span>
-                 <span className="text-gray-900 font-bold text-lg">6 <span className="text-gray-400 font-semibold text-xs ml-1">/924</span></span>
-               </div>
-            </div>
-          </div>
-
-          {/* Badges */}
-          <div className="bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
-             <div className="flex justify-between items-start mb-6">
-                <div>
-                  <div className="text-gray-500 text-sm font-semibold mb-1">Badges</div>
-                  <div className="text-4xl font-black text-gray-900">2</div>
-                </div>
-                <div className="p-2 hover:bg-gray-200 rounded-lg cursor-pointer transition">
-                   <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
-                </div>
-             </div>
-             
-             <div className="flex items-center gap-4 py-6 flex-1">
-                <img 
-                  src="https://assets.leetcode.com/static_assets/others/SQL_50.gif" 
-                  alt="SQL 50 Badge" 
-                  className="w-16 h-16 object-contain drop-shadow-md hover:scale-110 transition-transform cursor-pointer" 
-                  title="SQL 50" 
-                  onError={(e) => { e.target.src = "https://assets.leetcode.com/static_assets/others/Top_SQL_50.gif" }} 
-                />
-                <img 
-                  src="https://assets.leetcode.com/static_assets/others/Introduction_to_Pandas.gif" 
-                  alt="Introduction to Pandas Badge" 
-                  className="w-16 h-16 object-contain drop-shadow-md hover:scale-110 transition-transform cursor-pointer" 
-                  title="Introduction to Pandas" 
-                />
-             </div>
-             
-             <div className="mt-4 border-t border-gray-200 pt-4">
-               <div className="text-gray-400 text-xs uppercase tracking-widest font-bold mb-1">Most Recent Badge</div>
-               <div className="text-gray-900 font-bold text-lg truncate">Introduction to Pandas</div>
-             </div>
-          </div>
-
         </div>
       </div>
     </section>

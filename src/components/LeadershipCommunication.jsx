@@ -88,11 +88,11 @@ const LeadershipCommunication = () => {
           <h3 className="text-4xl font-bold text-gray-900 mb-8 text-center">What Others Say</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div className="bg-gray-50 p-8 rounded-xl shadow-md border border-blue-200 italic text-gray-700">
-              <p className="mb-5 leading-relaxed">"Prathvi's leadership during the hackathon was exceptional. He kept team focused, motivated, and his ability to explain complex ideas made a huge difference. A true team player!"</p>
+              <p className="mb-5 leading-relaxed">"Krishna's leadership during the hackathon was exceptional. He kept the team focused, motivated, and his ability to explain complex ideas made a huge difference. A true team player!"</p>
               <p className="text-right font-semibold text-blue-600">- Professor Rawat, IGEC Sagar</p>
             </div>
             <div className="bg-gray-50 p-8 rounded-xl shadow-md border border-blue-200 italic text-gray-700">
-              <p className="mb-5 leading-relaxed">"His technical communication skills are top-notch. Prathvi can break down the most challenging concepts into easily understandable terms, which is invaluable for any project."</p>
+              <p className="mb-5 leading-relaxed">"His technical communication skills are top-notch. Krishna can break down the most challenging concepts into easily understandable terms, which is invaluable for any project."</p>
               <p className="text-right font-semibold text-blue-600">- Pandey Sir, A.P. Computers</p>
             </div>
           </div>

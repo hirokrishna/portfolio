@@ -4,12 +4,11 @@ import Home from './components/Home';
 import AboutMe from './components/AboutMe';
 import TechnicalProwess from './components/TechnicalProwess';
 import LeetCodeProfile from './components/LeetCodeProfile';
-import CreativeCorner from './components/CreativeCorner';
+import ExperienceTimeline from './components/ExperienceTimeline';
 import LeadershipCommunication from './components/LeadershipCommunication';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Gallery from './components/Gallery';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -21,7 +20,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about-me', 'technical-prowess', 'leetcode', 'creative-corner', 'leadership-communication', 'contact'];
+      const sections = ['home', 'about-me', 'technical-prowess', 'leetcode', 'experience-timeline', 'leadership-communication', 'contact'];
       let currentActive = 'home';
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i]);
@@ -56,7 +55,7 @@ function App() {
               <AboutMe />
               <TechnicalProwess />
               <LeetCodeProfile />
-              <CreativeCorner />
+              <ExperienceTimeline />
               <LeadershipCommunication />
               <Contact />
             </main>
@@ -64,7 +63,6 @@ function App() {
             <Footer />
           </div>
         } />
-        <Route path="/gallery" element={<Gallery />} />
       </Routes>
     </BrowserRouter>
   );

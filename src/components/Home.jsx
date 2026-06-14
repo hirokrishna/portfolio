@@ -8,7 +8,7 @@ const Home = ({ navigateTo }) => {
   const [typingSpeed, setTypingSpeed] = useState(150);
 
   const taglines = React.useMemo(() => [
-    "Python Developer", "Web Innovator", "DevOps Enthusiast", "AI Explorer", "Game Creator", "3D Artist", "Strategic Trader", "Polymath"
+    "Full-Stack Developer", "Python Developer", "Web Innovator", "AI Explorer", "DevOps Enthusiast", "Competitive Programmer", "Polymath"
   ], []);
 
   useEffect(() => {
@@ -44,14 +44,14 @@ const Home = ({ navigateTo }) => {
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 py-12 bg-white bg-opacity-70 rounded-3xl shadow-2xl border border-blue-300 backdrop-blur-sm">
         <h1 className="text-6xl md:text-8xl font-extrabold text-gray-900 leading-tight mb-6 animate-fade-in-up">
-          Prathvi Singh Thakur
+          Krishna Pathak
         </h1>
         <p className="text-2xl md:text-4xl text-blue-600 font-mono mb-10 h-10">
           <span className="typewriter-text">{currentText}</span>
           <span className="blinking-cursor">_</span>
         </p>
         <p className="text-lg md:text-xl text-gray-700 mb-12 max-w-2xl mx-auto animate-fade-in-up delay-300">
-          Crafting innovative solutions across diverse domains, from code to canvas.
+          A passionate developer building intelligent web solutions, exploring artificial intelligence, and engineering for the future.
         </p>
         <div className="flex flex-col sm:flex-row justify-center space-y-5 sm:space-y-0 sm:space-x-8 animate-fade-in-up delay-500">
           <button

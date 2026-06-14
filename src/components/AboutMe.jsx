@@ -18,7 +18,7 @@ const AboutMe = () => {
           <div className="flex justify-center mb-[-40px] relative z-20">
             <img
               src="/about_me_image.png"
-              alt="Prathvi Singh Thakur"
+              alt="Krishna Pathak"
               className="w-[260px] object-contain"
             />
           </div>
@@ -35,27 +35,27 @@ const AboutMe = () => {
           >
             <div className="text-base leading-relaxed text-gray-700">
               <p className="mb-5">
-                As a B.Tech (Information Technology) graduate from{" "}
+                As a B.Tech (Information Technology) student in my 2nd year at{" "}
+                <span className="font-semibold text-blue-600">Indira Gandhi Engineering College (IGEC) Sagar</span>,
+                affiliated with{" "}
                 <span className="font-semibold text-blue-600">RGPV Bhopal</span>,
-                complemented by a DCA from{" "}
-                <span className="font-semibold text-blue-600">Makhanlal Chaturvedi University</span>,
-                and a foundational education from{" "}
-                <span className="font-semibold text-blue-600">Kendriya Vidyalaya Sagar</span>,
-                my journey has been defined by a relentless pursuit of knowledge.
+                and with a foundational education from{" "}
+                <span className="font-semibold text-blue-600">Paras Vidhya Vihar (Tili Sagar)</span>,
+                my journey has been defined by a relentless pursuit of engineering excellence.
               </p>
               <p className="mb-5">
                 My core technical interests span across{" "}
                 <span className="font-semibold text-blue-600">Python with deep DSA expertise</span>,
-                robust <span className="font-semibold text-blue-600">Web Development</span>,
+                robust <span className="font-semibold text-blue-600">Web Development</span> using modern frameworks like React and Next.js,
                 efficient <span className="font-semibold text-blue-600">DevOps</span>,
-                cutting-edge <span className="font-semibold text-blue-600">AI/ML</span>,
-                and immersive <span className="font-semibold text-blue-600">Game Development</span>.
+                and cutting-edge <span className="font-semibold text-blue-600">AI/ML</span> agentic workflows.
               </p>
               <p>
                 My technical acumen is further amplified by strong{" "}
-                <span className="font-semibold text-blue-600">communication skills</span>{" "}
-                and proven{" "}
-                <span className="font-semibold text-blue-600">leadership abilities</span>.
+                <span className="font-semibold text-blue-600">communication skills</span>,
+                proven{" "}
+                <span className="font-semibold text-blue-600">leadership abilities</span>,
+                adaptability, and a proactive approach to solving complex problems.
               </p>
             </div>
           </div>
@@ -85,27 +85,27 @@ const AboutMe = () => {
             >
               <div className="text-lg leading-relaxed text-gray-700">
                 <p className="mb-5">
-                  As a B.Tech (Information Technology) graduate from{" "}
+                  As a B.Tech (Information Technology) student in my 2nd year at{" "}
+                  <span className="font-semibold text-blue-600">Indira Gandhi Engineering College (IGEC) Sagar</span>,
+                  affiliated with{" "}
                   <span className="font-semibold text-blue-600">RGPV Bhopal</span>,
-                  complemented by a DCA from{" "}
-                  <span className="font-semibold text-blue-600">Makhanlal Chaturvedi University</span>,
-                  and a foundational education from{" "}
-                  <span className="font-semibold text-blue-600">Kendriya Vidyalaya Sagar</span>,
-                  my journey has been defined by a relentless pursuit of knowledge.
+                  and with a foundational education from{" "}
+                  <span className="font-semibold text-blue-600">Paras Vidhya Vihar (Tili Sagar)</span>,
+                  my journey has been defined by a relentless pursuit of engineering excellence.
                 </p>
                 <p className="mb-5">
                   My core technical interests span across{" "}
                   <span className="font-semibold text-blue-600">Python with deep DSA expertise</span>,
-                  robust <span className="font-semibold text-blue-600">Web Development</span>,
+                  robust <span className="font-semibold text-blue-600">Web Development</span> using modern frameworks like React and Next.js,
                   efficient <span className="font-semibold text-blue-600">DevOps</span>,
-                  cutting-edge <span className="font-semibold text-blue-600">AI/ML</span>,
-                  and immersive <span className="font-semibold text-blue-600">Game Development</span>.
+                  and cutting-edge <span className="font-semibold text-blue-600">AI/ML</span> agentic workflows.
                 </p>
                 <p>
                   My technical acumen is further amplified by strong{" "}
-                  <span className="font-semibold text-blue-600">communication skills</span>{" "}
-                  and proven{" "}
-                  <span className="font-semibold text-blue-600">leadership abilities</span>.
+                  <span className="font-semibold text-blue-600">communication skills</span>,
+                  proven{" "}
+                  <span className="font-semibold text-blue-600">leadership abilities</span>,
+                  adaptability, and a proactive approach to solving complex problems.
                 </p>
               </div>
             </div>
@@ -123,7 +123,7 @@ const AboutMe = () => {
             >
               <img
                 src="/about_me_image.png"
-                alt="Prathvi Singh Thakur"
+                alt="Krishna Pathak"
                 className="
                   md:w-[380px]
                   lg:w-[440px]

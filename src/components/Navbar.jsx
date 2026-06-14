@@ -8,7 +8,7 @@ const Navbar = ({ navigateTo, activeSection }) => {
     { id: 'about-me', name: 'About Me' },
     { id: 'technical-prowess', name: 'Technical Prowess' },
     { id: 'leetcode', name: 'LeetCode' },
-    { id: 'creative-corner', name: 'Creative Corner' },
+    { id: 'experience-timeline', name: 'Experience & Milestones' },
     { id: 'leadership-communication', name: 'Leadership & Communication' },
     { id: 'contact', name: 'Contact' },
   ];
@@ -21,7 +21,7 @@ const Navbar = ({ navigateTo, activeSection }) => {
             xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
           </svg>
-          <span className="text-2xl font-extrabold text-blue-600 tracking-wider">Prathvi</span>
+          <span className="text-2xl font-extrabold text-blue-600 tracking-wider">Krishna</span>
         </div>
 
         <div className="hidden md:flex space-x-8">
