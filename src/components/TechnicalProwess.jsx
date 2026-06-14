@@ -139,26 +139,26 @@ const TechnicalProwess = () => {
     {
       id: 1,
       title: "Google × Kaggle AI Agents Course",
-      date: "Feb 2026",
-      image: "https://placehold.co/150x150/4285F4/FFFFFF?text=Google+AI",
+      date: "Dec 2025",
+      image: "/cert_google_agents.png",
     },
     {
       id: 2,
       title: "JPMorgan Chase Software Engineering Simulation",
-      date: "Jan 2026",
-      image: "https://placehold.co/150x150/003F87/FFFFFF?text=JPMC",
+      date: "Oct 2025",
+      image: "/cert_jpmc.png",
     },
     {
       id: 3,
       title: "AI & Python Development Course",
-      date: "Dec 2025",
-      image: "https://placehold.co/150x150/3776AB/FFFFFF?text=Python+AI",
+      date: "Oct 2025",
+      image: "/cert_udemy_python.png",
     },
     {
       id: 4,
       title: "be10x AI Workshop",
       date: "Oct 2025",
-      image: "https://placehold.co/150x150/000000/FFFFFF?text=be10x",
+      image: "/cert_be10x.png",
     },
   ];
 
