@@ -2,7 +2,7 @@
   "name": "krishna-portfolio",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://hirokrishna.github.io/portfolio",
+  "homepage": ".",
   "description": "Krishna Pathak's Portfolio - React Version",
   "author": "Krishna Pathak",
   "dependencies": {
