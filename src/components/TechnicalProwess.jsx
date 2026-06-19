@@ -70,7 +70,7 @@ const TechnicalProwess = () => {
       github: "https://github.com/hirokrishna/MediMate",
       demo: "",
       media: [
-        { type: "image", url: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80" }
+        { type: "image", url: "/medimate.png" }
       ],
       details: {
         whatIDid: "Architected and built the entire medical companion system using Next.js 14 and Tailwind CSS.",
@@ -88,7 +88,7 @@ const TechnicalProwess = () => {
       github: "https://github.com/hirokrishna/NutriTrack",
       demo: "",
       media: [
-        { type: "image", url: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=800&q=80" }
+        { type: "image", url: "/nutritrack.png" }
       ],
       details: {
         whatIDid: "Built a lightweight frontend using vanilla JavaScript and responsive pure CSS.",
@@ -106,7 +106,7 @@ const TechnicalProwess = () => {
       github: "https://github.com/hirokrishna/City-Bus",
       demo: "",
       media: [
-        { type: "image", url: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80" }
+        { type: "image", url: "/citybus.png" }
       ],
       details: {
         whatIDid: "Developed the map rendering logic using Leaflet.js and implemented simulated bus tracking along route polylines.",
@@ -117,20 +117,20 @@ const TechnicalProwess = () => {
     },
     {
       id: 4,
-      title: "JPMorgan Software Simulation (Midas)",
-      category: "Python & Data Engineering",
-      tech: ["Python", "React", "TypeScript", "Perspective", "Data Visualizations"],
-      description: "A development repository detailing corporate software engineering fixes, financial data processing, and stock chart integrations.",
+      title: "Midas Core: Real-Time Transaction Processor",
+      category: "JPMorgan Chase (Forage)",
+      tech: ["Java", "Spring Boot", "Apache Kafka", "Spring Data JPA", "H2 Database", "REST APIs"],
+      description: "Engineered a Spring Boot financial transaction processing system to handle real-time message feeds via Apache Kafka as part of JPMorgan Chase's experience.",
       github: "https://github.com/hirokrishna/forage-midas",
       demo: "",
       media: [
-        { type: "image", url: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=800&q=80" }
+        { type: "image", url: "/jpmorgan_midas.png" }
       ],
       details: {
-        whatIDid: "Contributed software fixes to the system codebase as part of JPMorgan's simulation.",
-        approach: "Worked with Python for data feeds and financial scripts, and updated React-based charts using the Perspective open-source data visualization library.",
-        vision: "To understand production-level software systems in finance and adapt corporate engineering practices.",
-        problemSolved: "Corrected charting bugs to ensure accurate real-time stock correlation graphs displayed for trading operators."
+        whatIDid: "Engineered a Spring Boot financial transaction processing system to handle real-time message feeds via Apache Kafka.",
+        approach: "Structured an H2 database schema with JPA for persistence, integrated a third-party Incentive REST API for reward calculations, and exposed custom endpoints for account balance inquiries.",
+        vision: "To build a robust, scalable, and highly available financial transaction processor capable of handling real-time high-throughput message streams.",
+        problemSolved: "Exposed secure and performant custom endpoints for account balance inquiries and automated reward calculations, enabling immediate and reliable processing of transaction logs."
       }
     }
   ];

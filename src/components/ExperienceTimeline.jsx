@@ -14,13 +14,13 @@ const MILESTONES = [
   },
   {
     id: 2,
-    title: "Software Engineering Virtual Experience",
+    title: "Advanced Software Engineering Virtual Experience",
     subtitle: "JPMorgan Chase & Co. (Forage)",
     date: "Feb 2026",
     icon: Briefcase,
     iconColor: "text-blue-500 bg-blue-50 border-blue-100",
-    description: "Participated in the JPMC Advanced Software Engineering simulation. Worked on fixing data visualization systems, integrated financial graphing elements (Perspective tool) to display real-time stock prices, and practiced corporate Git workflow procedures.",
-    tags: ["React", "Python", "Data Visualization", "Perspective", "Git"]
+    description: "Engineered the 'Midas Core' real-time transaction processing system using Spring Boot and Apache Kafka. Structured JPA/H2 schema for persistence, integrated third-party Incentive REST API for reward calculations, and exposed custom endpoints.",
+    tags: ["Java", "Spring Boot", "Apache Kafka", "Spring Data JPA", "REST APIs", "H2 Database"]
   },
   {
     id: 3,
